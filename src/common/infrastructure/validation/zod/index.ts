@@ -1,0 +1,22 @@
+import { AppError } from '@/common/domain/errors/app-error'
+
+export function dataValidation(schema: any, data: any) {
+  /**
+   * @param schema objeto com schema de validation para Zod
+   * @param data objeto com os dados a serem validados
+   * @returns retorna os dados validados
+   */
+
+  const validatedData = schema.safaParse(data)
+
+  if (validatedData.sucess === false) {
+    console.error('Invalid data', validatedData.error.format())
+    throw new AppError(
+      `${validatedData.error.errors.map((err) => {
+        return `${err.path} => ${err.mensage}`
+      })}`,
+    )
+  }
+
+  return data
+}
