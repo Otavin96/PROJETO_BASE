@@ -1,15 +1,14 @@
 import express from 'express'
-import cors from 'cors'
+import 'express-async-errors'
 import { router } from './routes'
+import cors from 'cors'
+import { errorHandler } from './middlewares/errorHandler'
 
 const app = express()
 
-app.use(express.json())
 app.use(cors())
+app.use(express.json())
 app.use(router)
-
-app.get('/', (req, res) => {
-  res.json({ message: 'Hello, world!' })
-})
+app.use(errorHandler)
 
 export { app }

@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "138310f5-898c-424c-a378-dec327f09509",
+		"name": "Projeto_Base",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35373665"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Cadastrar Usuário",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Otavio Afonso Lazzarotto\",\r\n    \"email\": \"otavio@teste.com\",\r\n    \"password\": \"123456\",\r\n    \"roles\": \"user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}users/",
+							"host": [
+								"{{base}}users"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Atualizar Usuário",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Otavio Afonso Lazzarotto\",\r\n    \"email\": \"otavio@afonso.com\",\r\n    \"password\": \"otavio\",\r\n    \"roles\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}users/a12367bb-901a-411f-b40e-81f0ba44ae54",
+							"host": [
+								"{{base}}users"
+							],
+							"path": [
+								"a12367bb-901a-411f-b40e-81f0ba44ae54"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar Usuário por ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}users/26da7833-0c08-475d-8f3d-74e71da05a92",
+							"host": [
+								"{{base}}users"
+							],
+							"path": [
+								"26da7833-0c08-475d-8f3d-74e71da05a92"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Deletar Usuário",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base}}users/a72b0128-6214-4b77-9fc8-492b52f4b1b1",
+							"host": [
+								"{{base}}users"
+							],
+							"path": [
+								"a72b0128-6214-4b77-9fc8-492b52f4b1b1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autenticação",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"admin@teste.com\",\r\n    \"password\": \"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base}}users/authenticate/",
+							"host": [
+								"{{base}}users"
+							],
+							"path": [
+								"authenticate",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base",
+			"value": "http://localhost:3333/",
+			"type": "string"
+		},
+		{
+			"key": "token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlcyI6ImFkbWluIiwiaWF0IjoxNzM3NTA5MzcxLCJleHAiOjE3Mzc1OTU3NzEsInN1YiI6IjA0MWFiN2FhLTM4ODctNGVlOS05YTZjLWIzYjVkM2MwOTJiYiJ9.bEsFFEwrLmL1CbVFuFuZG6nt_yFR4pSWxzgEY-1T9jg",
+			"type": "string"
+		}
+	]
+}
