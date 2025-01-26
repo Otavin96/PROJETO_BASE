@@ -3,6 +3,7 @@ import { Router } from 'express'
 import { CreateSuppliersController } from '../controller/create-suppliers.controller'
 import { hasRole } from '@/common/infrastructure/http/middlewares/hasRoles'
 import { DeleteSuppliersController } from '../controller/delete-suppliers.controller'
+import { UpdateSuppliersController } from '../controller/update-suppliers.controller'
 
 const suppliersRouter = Router()
 
@@ -12,6 +13,12 @@ suppliersRouter.delete(
   isAuth,
   hasRole(['admin']),
   DeleteSuppliersController,
+)
+suppliersRouter.put(
+  '/:id',
+  isAuth,
+  hasRole(['admin']),
+  UpdateSuppliersController,
 )
 
 export { suppliersRouter }
