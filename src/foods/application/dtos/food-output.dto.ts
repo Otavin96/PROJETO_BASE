@@ -1,6 +1,6 @@
 import { Supplier } from '@/suppliers/infrastructure/typeorm/entities/suppliers.entities'
 
-export interface FoodModel {
+export type FoodOutput = {
   id: string
   name: string
   quantity: number

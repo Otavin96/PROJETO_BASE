@@ -1,14 +1,17 @@
 import 'reflect-metadata'
-import { app } from './app'
 import { env } from '../env/'
+import { app } from './app'
 import { dataSource } from '../typeorm'
 import '@/common/infrastructure/container'
 
 dataSource
   .initialize()
-  .then(async () => {
-    app.listen(env.PORT | 3333, () => {
-      console.log(`Server is running on port ${env.PORT}`)
+  .then(() => {
+    app.listen(env.PORT, () => {
+      console.log(`Server running on port ${env.PORT}! 🏆`)
+      console.log('API docs available at GET /docs 📚')
     })
   })
-  .catch((error) => console.error('Error inicializing data source', error))
+  .catch((error) => {
+    console.error('Error initializing data source:', error)
+  })

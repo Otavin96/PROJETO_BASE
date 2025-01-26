@@ -9,7 +9,7 @@ import { hasRole } from '@/common/infrastructure/http/middlewares/hasRoles'
 
 const usersRouter = Router()
 
-usersRouter.post('/', isAuth, hasRole(['admin']), CreateUserController)
+usersRouter.post('/', CreateUserController)
 usersRouter.get('/:id', isAuth, hasRole(['admin', 'user']), GetUserController)
 usersRouter.delete('/:id', isAuth, hasRole(['admin']), DeleteUserController)
 usersRouter.put('/:id', hasRole(['admin', 'user']), UpdateUserController)
