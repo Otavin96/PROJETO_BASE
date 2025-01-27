@@ -5,6 +5,7 @@ import { SuppliersTypeormRepository } from '../typeorm/repositories/suppliers-ty
 import { CreateSuppliersUseCase } from '@/suppliers/application/usecases/create-suppliers.usecase'
 import { DeleteSuppliersUseCase } from '@/suppliers/application/usecases/delete-suppliers.usecase'
 import { UpdateSuppliersUseCase } from '@/suppliers/application/usecases/update-suppliers.usecase'
+import { GetSuppliersUseCase } from '@/suppliers/application/usecases/get-suppliers.usecase'
 
 container.registerSingleton('SuppliersRepository', SuppliersTypeormRepository)
 
@@ -27,3 +28,5 @@ container.registerSingleton(
   'UpdateSuppliersUseCase',
   UpdateSuppliersUseCase.UseCase,
 )
+
+container.registerSingleton('GetSuppliersUseCase', GetSuppliersUseCase.UseCase)

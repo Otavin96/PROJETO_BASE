@@ -37,6 +37,6 @@ export async function UpdateSuppliersController(
   })
 
   response
-    .status(201)
+    .status(200)
     .json([{ message: 'Fornecedor atualizado com sucesso!' }, supplier])
 }
