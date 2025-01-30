@@ -44,7 +44,10 @@ export class FoodsTypeormRepository implements FoodsRepository {
   }
 
   protected async _get(id: string): Promise<FoodModel> {
-    const food = await this.foodsRepository.findOneBy({ id })
+    const food = await this.foodsRepository.findOne({
+      where: { id },
+      relations: ['supplier_id'],
+    })
 
     if (!food) {
       throw new NotFoundError(`Food not found using ID: ${id}`)

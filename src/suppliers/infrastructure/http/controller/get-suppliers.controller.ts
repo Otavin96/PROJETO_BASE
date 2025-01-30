@@ -18,9 +18,7 @@ export async function GetSuppliersController(
     'GetSuppliersUseCase',
   )
 
-  const meal = await getSuppliersUseCase.execute({ id })
+  const suppliers = await getSuppliersUseCase.execute({ id })
 
-  response
-    .status(200)
-    .json([{ message: 'Fornecedor encontrado com sucesso!' }, meal])
+  response.status(200).json(suppliers)
 }

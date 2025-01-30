@@ -2,6 +2,7 @@ import { inject, injectable } from 'tsyringe'
 import { SupplierOutput } from '../dtos/suppliers.output.dto'
 import { SuppliersRepository } from '@/suppliers/repositories/Suppliers.repository'
 import { BadRequestError } from '@/common/domain/errors/bad-request-error'
+import { PdfMakerCreateProvider } from '@/common/infrastructure/providers/pdf-provider/pdfmaker-create-provider'
 
 export namespace GetSuppliersUseCase {
   export type Input = {
@@ -15,6 +16,8 @@ export namespace GetSuppliersUseCase {
     constructor(
       @inject('SuppliersRepository')
       private suppliersRepository: SuppliersRepository,
+      // @inject('PdfMakerCreateProvider')
+      // private pdfMakerCreateProvider: PdfMakerCreateProvider,
     ) {}
 
     async execute(input: Input): Promise<Output> {
@@ -22,9 +25,23 @@ export namespace GetSuppliersUseCase {
         throw new BadRequestError('Input data not provided or invalid')
       }
 
-      const meal = await this.suppliersRepository.findById(input.id)
+      const supplier = await this.suppliersRepository.findById(input.id)
 
-      return meal
+      // const columnsTitle = ['ID', 'Nome', 'Descrição', 'Telefone', 'Email']
+      // const data = [
+      //   [
+      //     String(supplier.id),
+      //     String(supplier.name),
+      //     String(supplier.description),
+      //     String(supplier.phone),
+      //     String(supplier.email),
+      //   ],
+      // ]
+      // const title = 'Fornecedor'
+
+      // await this.pdfMakerCreateProvider.createPdf(columnsTitle, data, title)
+
+      return supplier
     }
   }
 }

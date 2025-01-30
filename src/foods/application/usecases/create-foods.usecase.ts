@@ -38,8 +38,6 @@ export namespace CreateFoodsUseCase {
 
       const CreatedFood: FoodOutput = await this.foodsRepository.insert(food)
 
-      console.log(CreatedFood)
-
       return CreatedFood
     }
   }

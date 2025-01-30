@@ -1,5 +1,6 @@
 import { Food } from '@/foods/infrastructure/typeorm/entities/foods.entity'
 import { FoodsPerMealsModel } from '@/foodsPerMeals/domain/models/foods-per-meals.model'
+import { FoodWaste } from '@/foodWastes/infrastructure/typeorm/entities/foodWastes.entities'
 import { Meal } from '@/meals/infrastructure/typeorm/entities/meals.entities'
 import {
   Column,
@@ -24,6 +25,9 @@ export class FoodsPerMeal implements FoodsPerMealsModel {
   @ManyToOne(() => Meal, (meal) => meal.foodsPerMeal, { nullable: true })
   @JoinColumn({ name: 'meal_id' })
   meal_id: Meal
+
+  @OneToMany(() => FoodWaste, (FoodWaste) => FoodWaste.food_per_meal_id)
+  FoodWaste: FoodWaste[]
 
   @Column('decimal', { precision: 10, scale: 2 })
   quantity: number
